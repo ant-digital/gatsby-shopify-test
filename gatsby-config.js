@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
@@ -7,8 +9,9 @@ module.exports = {
     {
       resolve: "gatsby-source-shopify",
       options: {
-        shopName: "ant-gatsby-test",
-        accessToken: "0b7cf1bcb27a3f49ed6ffff1ddae1add",
+        password: process.env.SHOPIFY_SHOP_PASSWORD,
+        storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
+        salesChannel: process.env.GATSBY_SHOPIFY_SALES_CHANNEL,
       },
     },
     "gatsby-plugin-gatsby-cloud",
@@ -31,5 +34,6 @@ module.exports = {
       },
       __key: "images",
     },
+    "gatsby-plugin-graphql-config"
   ],
 };
